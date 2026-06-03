@@ -1,300 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MaviMaker | Catálogo 3D</title>
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:Arial,Helvetica,sans-serif;background:#fff9fc;color:#2b2b2b}
-
-header{
-  position:sticky;top:0;z-index:100;background:#fff;
-  box-shadow:0 4px 18px rgba(0,0,0,.08);
-  padding:12px 7%;display:flex;align-items:center;justify-content:space-between;gap:20px
-}
-
-.logo-box{
-  background:#222;border-radius:20px;padding:12px 22px;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 5px 18px rgba(0,0,0,.25)
-}
-
-.logo-box img{height:72px;width:auto;max-width:310px;object-fit:contain;display:block}
-
-nav{display:flex;gap:18px;flex-wrap:wrap;font-weight:700}
-nav a{text-decoration:none;color:#444}
-nav a:hover{color:#e85ca0}
-
-.hero{
-  background:linear-gradient(135deg,#ffe2f1,#e6faff,#f2ffe8);
-  padding:65px 7%;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center
-}
-
-.hero h1{font-size:50px;line-height:1.05;margin-bottom:18px}
-.hero p{font-size:20px;line-height:1.5;color:#555;margin-bottom:26px}
-
-.hero-card{
-  background:#fff;border-radius:34px;padding:26px;text-align:center;
-  box-shadow:0 12px 35px rgba(0,0,0,.12)
-}
-
-.hero-card .logo-box{margin:0 auto 18px auto}
-
-.btn{
-  display:inline-block;background:#25d366;color:#fff;
-  padding:12px 21px;border-radius:999px;text-decoration:none;
-  font-weight:800;border:none;cursor:pointer;
-  box-shadow:0 5px 15px rgba(0,0,0,.18)
-}
-
-.btn-pink{background:#e85ca0}
-
-section{padding:55px 7%}
-.section-title{text-align:center;font-size:36px;margin-bottom:10px}
-.section-subtitle{text-align:center;color:#777;margin-bottom:30px}
-
-.categories{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:16px
-}
-
-.category{
-  background:#fff;border-radius:24px;padding:22px 12px;text-align:center;
-  font-weight:800;box-shadow:0 6px 20px rgba(0,0,0,.08);
-  border:2px solid #f6e7f0;text-decoration:none;color:#333
-}
-
-.category span{display:block;font-size:34px;margin-bottom:8px}
-
-.controls{
-  display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:30px
-}
-
-.search{
-  padding:14px 18px;border:2px solid #f3dce8;border-radius:999px;
-  min-width:280px;font-size:15px;outline:none
-}
-
-.filter-btn{
-  border:none;background:#fff;border:2px solid #f3dce8;
-  padding:12px 18px;border-radius:999px;cursor:pointer;font-weight:800;color:#555
-}
-
-.filter-btn.active,.filter-btn:hover{background:#e85ca0;color:#fff;border-color:#e85ca0}
-
-.products{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:25px
-}
-
-.product{
-  background:#fff;border-radius:28px;padding:18px;text-align:center;
-  box-shadow:0 7px 22px rgba(0,0,0,.1);
-  border:1px solid #f3edf2;cursor:pointer;transition:.2s
-}
-
-.product:hover{transform:translateY(-5px);box-shadow:0 12px 28px rgba(0,0,0,.15)}
-
-.product-img{
-  height:220px;border-radius:22px;background:#f7f7f7;
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;margin-bottom:14px
-}
-
-.product-img img{width:100%;height:100%;object-fit:cover}
-
-.tag{
-  display:inline-block;background:#fff3c4;color:#8a6b00;
-  font-size:12px;font-weight:800;padding:6px 12px;
-  border-radius:999px;margin-bottom:10px
-}
-
-.product h3{font-size:19px;margin-bottom:8px}
-.product p{color:#666;font-size:14px;min-height:44px;line-height:1.4;margin-bottom:12px}
-.price{font-size:22px;font-weight:900;color:#e85ca0;margin-bottom:14px}
-
-.about{
-  background:linear-gradient(135deg,#fff,#f3fbff);
-  border-radius:34px;padding:38px;max-width:1000px;margin:auto;
-  text-align:center;box-shadow:0 8px 25px rgba(0,0,0,.09)
-}
-
-footer{
-  background:#2d2d2d;color:#fff;text-align:center;
-  padding:35px 7%;line-height:1.7
-}
-
-.whatsapp-float{
-  position:fixed;right:22px;bottom:22px;width:64px;height:64px;
-  border-radius:50%;background:#25d366;color:#fff;
-  display:flex;align-items:center;justify-content:center;
-  font-size:34px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.3);z-index:200
-}
-
-.modal{
-  display:none;position:fixed;z-index:500;left:0;top:0;width:100%;height:100%;
-  background:rgba(0,0,0,.55);padding:20px;overflow:auto
-}
-
-.modal-content{
-  background:#fff;max-width:980px;margin:35px auto;border-radius:30px;
-  padding:25px;position:relative;box-shadow:0 12px 35px rgba(0,0,0,.25);
-  display:grid;grid-template-columns:1fr 1fr;gap:25px
-}
-
-.close{
-  position:absolute;right:22px;top:18px;font-size:34px;
-  cursor:pointer;font-weight:bold;color:#555
-}
-
-.modal-main-img{
-  height:360px;border-radius:25px;background:#f7f7f7;
-  display:flex;justify-content:center;align-items:center;overflow:hidden;margin-bottom:15px
-}
-
-.modal-main-img img{width:100%;height:100%;object-fit:contain}
-
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-
-.gallery div{
-  height:90px;border-radius:16px;background:#f7f7f7;overflow:hidden;
-  border:2px solid #f0e4ec;cursor:pointer
-}
-
-.gallery img{width:100%;height:100%;object-fit:cover}
-
-.modal-info h2{font-size:32px;margin-bottom:10px;padding-right:35px}
-.modal-info p{color:#666;line-height:1.5;margin-bottom:14px}
-
-.info-box{
-  background:#fff7fb;padding:14px;border-radius:18px;
-  margin-bottom:12px;border:1px solid #f3dce8
-}
-
-.modal-price{font-size:28px;font-weight:900;color:#e85ca0;margin:15px 0}
-
-@media(max-width:850px){
-  header{flex-direction:column}
-  .logo-box img{height:62px}
-  .hero{grid-template-columns:1fr;text-align:center;padding:45px 6%}
-  .hero h1{font-size:38px}
-  .modal-content{grid-template-columns:1fr}
-  .modal-main-img{height:280px}
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <a class="logo-box" href="#inicio">
-    <img src="assets/logo-mavimaker.svg" alt="MaviMaker Logo">
-  </a>
-
-  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#categorias">Categorías</a>
-    <a href="#catalogo">Catálogo</a>
-    <a href="#personalizados">Personalizados</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-</header>
-
-<main id="inicio">
-
-<section class="hero">
-  <div>
-    <h1>Detalles personalizados en impresión 3D</h1>
-    <p>Recuerdos, llaveros, porta bebidas, placas, accesorios y diseños personalizados para eventos, negocios y regalos especiales.</p>
-    <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20hacer%20un%20pedido%20personalizado%20con%20MaviMaker" target="_blank">Pedir por WhatsApp</a>
-  </div>
-
-  <div class="hero-card">
-    <div class="logo-box">
-      <img src="assets/logo-mavimaker.svg" alt="MaviMaker">
-    </div>
-    <h2>Catálogo MaviMaker</h2>
-    <p>Elige diseño, colores, nombre y temática.</p>
-  </div>
-</section>
-
-<section id="categorias">
-  <h2 class="section-title">Categorías</h2>
-  <p class="section-subtitle">Toca una categoría para filtrar los productos.</p>
-
-  <div class="categories">
-    <a class="category" href="#catalogo" onclick="filterProducts('Porta bebidas')"><span>🥤</span>Porta bebidas</a>
-    <a class="category" href="#catalogo" onclick="filterProducts('Llaveros')"><span>🔑</span>Llaveros</a>
-    <a class="category" href="#catalogo" onclick="filterProducts('Accesorios')"><span>💅</span>Accesorios</a>
-    <a class="category" href="#catalogo" onclick="filterProducts('Recuerdos')"><span>🎁</span>Recuerdos</a>
-    <a class="category" href="#catalogo" onclick="filterProducts('Mascotas')"><span>🐾</span>Mascotas</a>
-    <a class="category" href="#catalogo" onclick="filterProducts('Negocios')"><span>📲</span>Negocios</a>
-  </div>
-</section>
-
-<section id="catalogo">
-  <h2 class="section-title">Catálogo</h2>
-  <p class="section-subtitle">Toca cualquier producto para ver más detalles y pedir por WhatsApp.</p>
-
-  <div class="controls">
-    <input class="search" id="searchInput" type="text" placeholder="Buscar producto..." oninput="renderProducts()">
-    <button class="filter-btn active" onclick="filterProducts('Todos')">Todos</button>
-    <button class="filter-btn" onclick="filterProducts('Llaveros')">Llaveros</button>
-    <button class="filter-btn" onclick="filterProducts('Accesorios')">Accesorios</button>
-    <button class="filter-btn" onclick="filterProducts('Recuerdos')">Recuerdos</button>
-    <button class="filter-btn" onclick="filterProducts('Mascotas')">Mascotas</button>
-    <button class="filter-btn" onclick="filterProducts('Negocios')">Negocios</button>
-  </div>
-
-  <div class="products" id="productsContainer"></div>
-</section>
-
-<section id="personalizados">
-  <div class="about">
-    <h2>¿Tienes una idea especial?</h2>
-    <p>Podemos crear diseños personalizados con nombre, colores, logo, temática o evento.</p><br>
-    <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20un%20diseño%20personalizado%20con%20MaviMaker" target="_blank">Cotizar personalizado</a>
-  </div>
-</section>
-
-</main>
-
-<footer id="contacto">
-  <p><strong>MaviMaker</strong></p>
-  <p>Impresión 3D personalizada</p>
-  <p>Pedidos por WhatsApp: 814 789 9927</p>
-</footer>
-
-<a class="whatsapp-float" href="https://wa.me/5218147899927?text=Hola,%20quiero%20hacer%20un%20pedido%20con%20MaviMaker" target="_blank">☎</a>
-
-<div class="modal" id="productModal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">&times;</span>
-
-    <div>
-      <div class="modal-main-img" id="modalMainImage"></div>
-      <div class="gallery" id="modalGallery"></div>
-    </div>
-
-    <div class="modal-info">
-      <h2 id="modalTitle"></h2>
-      <div class="modal-price" id="modalPrice"></div>
-      <p id="modalDescription"></p>
-
-      <div class="info-box"><strong>Categoría:</strong> <span id="modalCategory"></span></div>
-      <div class="info-box"><strong>Personalización:</strong> <span id="modalCustom"></span></div>
-      <div class="info-box"><strong>Tiempo estimado:</strong> <span id="modalTime"></span></div>
-      <div class="info-box"><strong>Nota:</strong> <span id="modalNote"></span></div>
-
-      <a class="btn" id="modalWhatsapp" target="_blank">Pedir por WhatsApp</a>
-    </div>
-  </div>
-</div>
-
 <script>
 const phone = "5218147899927";
 let currentFilter = "Todos";
+
+function imgUrl(path){
+  return encodeURI(path);
+}
 
 const products = [
   {
@@ -511,7 +221,11 @@ function renderProducts(){
 
   const filtered = products.filter(p => {
     const matchCategory = currentFilter === "Todos" || p.category === currentFilter;
-    const matchSearch = p.title.toLowerCase().includes(search) || p.category.toLowerCase().includes(search);
+    const matchSearch =
+      p.title.toLowerCase().includes(search) ||
+      p.category.toLowerCase().includes(search) ||
+      p.tag.toLowerCase().includes(search);
+
     return matchCategory && matchSearch;
   });
 
@@ -523,13 +237,19 @@ function renderProducts(){
 
     card.innerHTML = `
       <div class="product-img">
-        <img src="${p.image}" alt="${p.title}" onerror="this.src='assets/logo-mavimaker.svg'; this.style.background='#222'; this.style.padding='25px';">
+        <img 
+          src="${imgUrl(p.image)}" 
+          alt="${p.title}"
+          onerror="this.src='assets/logo-mavimaker.svg'; this.style.background='#222'; this.style.padding='25px'; this.style.objectFit='contain';"
+        >
       </div>
       <span class="tag">${p.tag}</span>
       <h3>${p.title}</h3>
       <p>${p.description}</p>
       <div class="price">${p.price}</div>
-      <button class="btn btn-pink" onclick="openModal(${originalIndex}); event.stopPropagation();">Ver detalles</button>
+      <button class="btn btn-pink" onclick="openModal(${originalIndex}); event.stopPropagation();">
+        Ver detalles
+      </button>
     `;
 
     container.appendChild(card);
@@ -552,7 +272,11 @@ function openModal(index){
   const p = products[index];
 
   document.getElementById("modalMainImage").innerHTML =
-    `<img src="${p.image}" alt="${p.title}" onerror="this.src='assets/logo-mavimaker.svg'; this.style.background='#222'; this.style.padding='25px';">`;
+    `<img 
+      src="${imgUrl(p.image)}" 
+      alt="${p.title}"
+      onerror="this.src='assets/logo-mavimaker.svg'; this.style.background='#222'; this.style.padding='25px'; this.style.objectFit='contain';"
+    >`;
 
   document.getElementById("modalTitle").innerText = p.title;
   document.getElementById("modalPrice").innerText = p.price;
@@ -567,7 +291,14 @@ function openModal(index){
 
   p.gallery.forEach(img => {
     const div = document.createElement("div");
-    div.innerHTML = `<img src="${img}" alt="${p.title}" onclick="changeMainImage('${img}')">`;
+    div.innerHTML = `
+      <img 
+        src="${imgUrl(img)}" 
+        alt="${p.title}" 
+        onclick="changeMainImage('${imgUrl(img)}')"
+        onerror="this.src='assets/logo-mavimaker.svg'; this.style.background='#222'; this.style.padding='10px'; this.style.objectFit='contain';"
+      >
+    `;
     gallery.appendChild(div);
   });
 
@@ -578,7 +309,8 @@ function openModal(index){
 }
 
 function changeMainImage(img){
-  document.getElementById("modalMainImage").innerHTML = `<img src="${img}" alt="Producto">`;
+  document.getElementById("modalMainImage").innerHTML =
+    `<img src="${img}" alt="Producto">`;
 }
 
 function closeModal(){
@@ -587,11 +319,10 @@ function closeModal(){
 
 window.onclick = function(event){
   const modal = document.getElementById("productModal");
-  if(event.target === modal){ closeModal(); }
+  if(event.target === modal){
+    closeModal();
+  }
 }
 
 renderProducts();
 </script>
-
-</body>
-</html>
