@@ -17,17 +17,19 @@ header{
 }
 
 .logo-box{
-  background:#2b2b2b;
-  border-radius:18px;
-  padding:10px 18px;
+  background:#222;
+  border-radius:20px;
+  padding:12px 22px;
   display:flex;
   align-items:center;
+  justify-content:center;
+  box-shadow:0 5px 18px rgba(0,0,0,.25)
 }
 
 .logo-box img{
-  height:75px;
+  height:78px;
   width:auto;
-  max-width:300px;
+  max-width:320px;
   object-fit:contain;
   display:block;
 }
@@ -53,12 +55,17 @@ nav a:hover{color:#e85ca0}
   box-shadow:0 12px 35px rgba(0,0,0,.12)
 }
 
-.hero-card .logo-box{justify-content:center;margin-bottom:18px}
+.hero-card .logo-box{margin:0 auto 20px auto}
 
 .btn{
   display:inline-block;background:#25d366;color:white;
   padding:13px 23px;border-radius:999px;text-decoration:none;
-  font-weight:800;box-shadow:0 5px 15px rgba(0,0,0,.18)
+  font-weight:800;border:none;cursor:pointer;
+  box-shadow:0 5px 15px rgba(0,0,0,.18)
+}
+
+.btn-secondary{
+  background:#e85ca0;
 }
 
 section{padding:58px 7%}
@@ -88,7 +95,14 @@ section{padding:58px 7%}
 .product{
   background:white;border-radius:28px;padding:18px;text-align:center;
   box-shadow:0 7px 22px rgba(0,0,0,.1);
-  border:1px solid #f3edf2
+  border:1px solid #f3edf2;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.product:hover{
+  transform:translateY(-5px);
+  box-shadow:0 12px 28px rgba(0,0,0,.15);
 }
 
 .product-img{
@@ -127,11 +141,105 @@ footer{
   z-index:200
 }
 
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  z-index:500;
+  left:0;top:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,.55);
+  padding:20px;
+  overflow:auto;
+}
+
+.modal-content{
+  background:#fff;
+  max-width:950px;
+  margin:35px auto;
+  border-radius:30px;
+  padding:25px;
+  position:relative;
+  box-shadow:0 12px 35px rgba(0,0,0,.25);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.close{
+  position:absolute;
+  right:22px;
+  top:18px;
+  font-size:34px;
+  cursor:pointer;
+  font-weight:bold;
+  color:#555;
+}
+
+.modal-main-img{
+  height:330px;
+  border-radius:25px;
+  background:linear-gradient(135deg,#fff0f7,#e9fbff,#f3ffe7);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:110px;
+  margin-bottom:15px;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.gallery div{
+  height:90px;
+  border-radius:16px;
+  background:#f7f7f7;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
+  border:2px solid #f0e4ec;
+}
+
+.modal-info h2{
+  font-size:32px;
+  margin-bottom:10px;
+  padding-right:35px;
+}
+
+.modal-info p{
+  color:#666;
+  line-height:1.5;
+  margin-bottom:14px;
+}
+
+.info-box{
+  background:#fff7fb;
+  padding:14px;
+  border-radius:18px;
+  margin-bottom:12px;
+  border:1px solid #f3dce8;
+}
+
+.info-box strong{color:#333}
+
+.modal-price{
+  font-size:28px;
+  font-weight:900;
+  color:#e85ca0;
+  margin:15px 0;
+}
+
 @media(max-width:850px){
   header{flex-direction:column}
   .logo-box img{height:65px}
   .hero{grid-template-columns:1fr;text-align:center;padding:45px 6%}
   .hero h1{font-size:38px}
+  .modal-content{grid-template-columns:1fr}
+  .modal-main-img{height:250px}
 }
 </style>
 </head>
@@ -172,7 +280,7 @@ footer{
 
 <section id="categorias">
   <h2 class="section-title">Categorías</h2>
-  <p class="section-subtitle">Ahora sí, cada botón te lleva a su sección.</p>
+  <p class="section-subtitle">Toca una categoría para ir a sus productos.</p>
 
   <div class="categories">
     <a class="category" href="#porta-latas"><span>🥤</span>Porta latas</a>
@@ -186,172 +294,9 @@ footer{
 
 <section id="catalogo">
 <h2 class="section-title">Catálogo destacado</h2>
-<p class="section-subtitle">Imagen genérica temporal; después cambiamos por fotos reales.</p>
+<p class="section-subtitle">Toca cualquier producto para ver más detalles y fotos.</p>
 
-<div class="products">
-
-<div class="product" id="porta-latas">
-  <div class="product-img">🥤</div><span class="tag">Porta latas</span>
-  <h3>Porta latas personalizado</h3><p>Ideal para eventos, negocios y regalos.</p>
-  <div class="price">$280</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Porta%20latas%20personalizado" target="_blank">Pedir</a>
-</div>
-
-<div class="product">
-  <div class="product-img">🥤</div><span class="tag">Mayoreo</span>
-  <h3>Porta latas mayoreo</h3><p>Precio especial para eventos y negocios.</p>
-  <div class="price">Desde $199</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20porta%20latas%20por%20mayoreo" target="_blank">Cotizar</a>
-</div>
-
-<div class="product" id="accesorios">
-  <div class="product-img">💅</div><span class="tag">Accesorio</span>
-  <h3>Abre latas Nails V2</h3><p>Accesorio práctico personalizado.</p>
-  <div class="price">$65</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Abre%20latas%20Nails%20V2" target="_blank">Pedir</a>
-</div>
-
-<div class="product">
-  <div class="product-img">🎀</div><span class="tag">Accesorio</span>
-  <h3>Abre latas Moño</h3><p>Diseño con moño para detalle personalizado.</p>
-  <div class="price">$85</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Abre%20latas%20Moño" target="_blank">Pedir</a>
-</div>
-
-<div class="product">
-  <div class="product-img">🪞</div><span class="tag">Accesorio</span>
-  <h3>Abre lata espejo</h3><p>Accesorio práctico con diseño personalizado.</p>
-  <div class="price">$85</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Abre%20lata%20espejo" target="_blank">Pedir</a>
-</div>
-
-<div class="product">
-  <div class="product-img">👠</div><span class="tag">Accesorio</span>
-  <h3>Abre lata Zapatilla</h3><p>Diseño creativo en forma de zapatilla.</p>
-  <div class="price">$45</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Abre%20lata%20Zapatilla" target="_blank">Pedir</a>
-</div>
-
-<div class="product" id="llaveros">
-  <div class="product-img">🔑</div><span class="tag">Llavero</span>
-  <h3>Llavero Instax MINI</h3><p>Llavero personalizado para foto estilo Instax Mini.</p>
-  <div class="price">$120</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Llavero%20Instax%20MINI" target="_blank">Pedir</a>
-</div>
-
-<div class="product">
-  <div class="product-img">📸</div><span class="tag">Llavero</span>
-  <h3>Llavero Instax XL</h3><p>Versión grande personalizada tipo Instax.</p>
-  <div class="price">$160</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Llavero%20Instax%20XL" target="_blank">Pedir</a>
-</div>
-
-<div class="product">
-  <div class="product-img">🏷️</div><span class="tag">Llavero</span>
-  <h3>Llaveros Nombres</h3><p>Llaveros personalizados con nombre y colores.</p>
-  <div class="price">$85</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Llaveros%20Nombres" target="_blank">Pedir</a>
-</div>
-
-<div class="product">
-  <div class="product-img">💧</div><span class="tag">Llavero</span>
-  <h3>Llavero Tipo Owala</h3><p>Llavero personalizado para termo o botella.</p>
-  <div class="price">$120</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Llavero%20Tipo%20Owala" target="_blank">Pedir</a>
-</div>
-
-<div class="product">
-  <div class="product-img">🔑</div><span class="tag">Llavero</span>
-  <h3>Llavero personalizado</h3><p>Con nombre, logo, frase o temática.</p>
-  <div class="price">Desde $18</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Llavero%20Personalizado" target="_blank">Cotizar</a>
-</div>
-
-<div class="product">
-  <div class="product-img">🏋️</div><span class="tag">Llavero</span>
-  <h3>Llavero con logo</h3><p>Ideal para negocios, gimnasios y marcas.</p>
-  <div class="price">Cotizar</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20llaveros%20con%20logo" target="_blank">Cotizar</a>
-</div>
-
-<div class="product" id="eventos">
-  <div class="product-img">🕊️</div><span class="tag">Evento</span>
-  <h3>Recuerdos Comunión</h3><p>Detalles personalizados para Primera Comunión.</p>
-  <div class="price">Desde $18</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Recuerdos%20de%20Comunion" target="_blank">Cotizar</a>
-</div>
-
-<div class="product">
-  <div class="product-img">👶</div><span class="tag">Evento</span>
-  <h3>Recuerdos Bautizo</h3><p>Detalles personalizados para bautizo.</p>
-  <div class="price">Desde $18</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Recuerdos%20de%20Bautizo" target="_blank">Cotizar</a>
-</div>
-
-<div class="product">
-  <div class="product-img">🎂</div><span class="tag">Evento</span>
-  <h3>Recuerdos cumpleaños</h3><p>Detalles personalizados por temática.</p>
-  <div class="price">Cotizar</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20recuerdos%20para%20cumpleaños" target="_blank">Cotizar</a>
-</div>
-
-<div class="product">
-  <div class="product-img">🎀</div><span class="tag">Evento</span>
-  <h3>Recuerdos baby shower</h3><p>Detalles personalizados para baby shower.</p>
-  <div class="price">Cotizar</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20recuerdos%20para%20baby%20shower" target="_blank">Cotizar</a>
-</div>
-
-<div class="product" id="decoracion">
-  <div class="product-img">🔤</div><span class="tag">Decoración</span>
-  <h3>Letras personalizadas</h3><p>Nombres, iniciales y letras decorativas.</p>
-  <div class="price">Desde $180</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Letras%20personalizadas" target="_blank">Cotizar</a>
-</div>
-
-<div class="product">
-  <div class="product-img">🪄</div><span class="tag">Temático</span>
-  <h3>Varita Mágica Pago</h3><p>Accesorio temático personalizado.</p>
-  <div class="price">$180</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Varita%20Magica%20Pago" target="_blank">Pedir</a>
-</div>
-
-<div class="product">
-  <div class="product-img">🍷</div><span class="tag">Regalo</span>
-  <h3>Porta Vinos</h3><p>Porta botella personalizado para regalo.</p>
-  <div class="price">$225</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Porta%20Vinos" target="_blank">Pedir</a>
-</div>
-
-<div class="product">
-  <div class="product-img">🏅</div><span class="tag">Decoración</span>
-  <h3>Medallero</h3><p>Diseño personalizado para colgar medallas.</p>
-  <div class="price">$140</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Medallero" target="_blank">Pedir</a>
-</div>
-
-<div class="product">
-  <div class="product-img">🖼️</div><span class="tag">Regalo</span>
-  <h3>Porta Retratos MINI</h3><p>Porta retrato pequeño personalizado.</p>
-  <div class="price">$120</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Porta%20Retratos%20MINI" target="_blank">Pedir</a>
-</div>
-
-<div class="product">
-  <div class="product-img">📲</div><span class="tag">Negocio</span>
-  <h3>Display NFC</h3><p>Display personalizado para negocio o contenido digital.</p>
-  <div class="price">Desde $480</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Display%20NFC" target="_blank">Cotizar</a>
-</div>
-
-<div class="product" id="mascotas">
-  <div class="product-img">🐾</div><span class="tag">Mascotas</span>
-  <h3>Placas Mascotas</h3><p>Placas personalizadas para perros y gatos.</p>
-  <div class="price">Desde $65</div>
-  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Placas%20para%20Mascotas" target="_blank">Cotizar</a>
-</div>
-
-</div>
+<div class="products" id="productsContainer"></div>
 </section>
 
 <section id="personalizados">
@@ -371,6 +316,376 @@ footer{
 </footer>
 
 <a class="whatsapp-float" href="https://wa.me/5218147899927?text=Hola,%20quiero%20hacer%20un%20pedido%20con%20MaviMaker" target="_blank">☎</a>
+
+<div class="modal" id="productModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+
+    <div>
+      <div class="modal-main-img" id="modalEmoji">🥤</div>
+      <div class="gallery" id="modalGallery"></div>
+    </div>
+
+    <div class="modal-info">
+      <h2 id="modalTitle"></h2>
+      <div class="modal-price" id="modalPrice"></div>
+      <p id="modalDescription"></p>
+
+      <div class="info-box"><strong>Categoría:</strong> <span id="modalCategory"></span></div>
+      <div class="info-box"><strong>Personalización:</strong> <span id="modalCustom"></span></div>
+      <div class="info-box"><strong>Tiempo estimado:</strong> <span id="modalTime"></span></div>
+      <div class="info-box"><strong>Nota:</strong> <span id="modalNote"></span></div>
+
+      <a class="btn" id="modalWhatsapp" target="_blank">Pedir por WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const phone = "5218147899927";
+
+const products = [
+  {
+    id:"porta-latas",
+    emoji:"🥤",
+    title:"Porta latas personalizado",
+    category:"Porta latas",
+    tag:"Porta latas",
+    price:"$280",
+    description:"Porta latas personalizado en impresión 3D. Ideal para eventos, negocios, regalos y promociones.",
+    custom:"Nombre, colores, frase, logo o temática.",
+    time:"Depende del diseño y cantidad.",
+    note:"Accesorios adicionales pueden tener costo extra.",
+    gallery:["🥤","🎨","🎁"]
+  },
+  {
+    emoji:"🥤",
+    title:"Porta latas mayoreo",
+    category:"Porta latas",
+    tag:"Mayoreo",
+    price:"Desde $199",
+    description:"Precio especial para pedidos por volumen. Ideal para eventos, empresas y recuerdos personalizados.",
+    custom:"Nombre, logo, evento, colores y diseño.",
+    time:"Según cantidad solicitada.",
+    note:"Precio puede variar por diseño y accesorios.",
+    gallery:["🥤","📦","🎉"]
+  },
+  {
+    id:"accesorios",
+    emoji:"💅",
+    title:"Abre latas Nails V2",
+    category:"Accesorios",
+    tag:"Accesorio",
+    price:"$65",
+    description:"Accesorio práctico para abrir latas sin dañar uñas. Diseño funcional y personalizable.",
+    custom:"Color y nombre opcional.",
+    time:"Según disponibilidad.",
+    note:"Ideal para venta individual o como complemento.",
+    gallery:["💅","🥫","✨"]
+  },
+  {
+    emoji:"🎀",
+    title:"Abre latas Moño",
+    category:"Accesorios",
+    tag:"Accesorio",
+    price:"$85",
+    description:"Abre latas con diseño de moño, bonito y funcional para regalo o uso personal.",
+    custom:"Color y acabado.",
+    time:"Según disponibilidad.",
+    note:"Puede personalizarse por color.",
+    gallery:["🎀","💅","🥫"]
+  },
+  {
+    emoji:"🪞",
+    title:"Abre lata espejo",
+    category:"Accesorios",
+    tag:"Accesorio",
+    price:"$85",
+    description:"Accesorio práctico con diseño tipo espejo para abrir latas.",
+    custom:"Color y detalles.",
+    time:"Según disponibilidad.",
+    note:"Producto ligero y funcional.",
+    gallery:["🪞","💅","✨"]
+  },
+  {
+    emoji:"👠",
+    title:"Abre lata Zapatilla",
+    category:"Accesorios",
+    tag:"Accesorio",
+    price:"$45",
+    description:"Diseño creativo en forma de zapatilla. Ideal como detalle económico.",
+    custom:"Color a elegir.",
+    time:"Según disponibilidad.",
+    note:"Precio sujeto a diseño final.",
+    gallery:["👠","🥫","🎁"]
+  },
+  {
+    id:"llaveros",
+    emoji:"🔑",
+    title:"Llavero Instax MINI",
+    category:"Llaveros",
+    tag:"Llavero",
+    price:"$120",
+    description:"Llavero personalizado para foto estilo Instax Mini.",
+    custom:"Foto, nombre, color y frase.",
+    time:"Depende de archivo/foto proporcionada.",
+    note:"La foto debe enviarse por WhatsApp.",
+    gallery:["🔑","📸","🖼️"]
+  },
+  {
+    emoji:"📸",
+    title:"Llavero Instax XL",
+    category:"Llaveros",
+    tag:"Llavero",
+    price:"$160",
+    description:"Versión grande tipo Instax para foto personalizada.",
+    custom:"Foto, nombre, color y frase.",
+    time:"Depende de archivo/foto proporcionada.",
+    note:"Ideal para regalo personalizado.",
+    gallery:["📸","🔑","🎁"]
+  },
+  {
+    emoji:"🏷️",
+    title:"Llaveros Nombres",
+    category:"Llaveros",
+    tag:"Llavero",
+    price:"$85",
+    description:"Llaveros personalizados con nombre, colores y estilo a elegir.",
+    custom:"Nombre y combinación de colores.",
+    time:"Según cantidad.",
+    note:"Disponible para pedidos individuales o por volumen.",
+    gallery:["🏷️","🔑","🎨"]
+  },
+  {
+    emoji:"💧",
+    title:"Llavero Tipo Owala",
+    category:"Llaveros",
+    tag:"Llavero",
+    price:"$120",
+    description:"Llavero personalizado para termo o botella tipo Owala.",
+    custom:"Nombre, color y diseño.",
+    time:"Según disponibilidad.",
+    note:"Compatible con distintos estilos de termo.",
+    gallery:["💧","🔑","🥤"]
+  },
+  {
+    emoji:"🔑",
+    title:"Llavero personalizado",
+    category:"Llaveros",
+    tag:"Llavero",
+    price:"Desde $18",
+    description:"Llaveros personalizados con nombre, logo, frase o temática.",
+    custom:"Nombre, logo, temática, forma y colores.",
+    time:"Según diseño y cantidad.",
+    note:"Precio desde mayoreo o piezas sencillas pequeñas.",
+    gallery:["🔑","🎨","📦"]
+  },
+  {
+    emoji:"🏋️",
+    title:"Llavero con logo",
+    category:"Llaveros",
+    tag:"Negocio",
+    price:"Cotizar",
+    description:"Llaveros con logo para marcas, gimnasios, negocios o eventos.",
+    custom:"Logo, color, tamaño y cantidad.",
+    time:"Según diseño y volumen.",
+    note:"Se requiere logo o imagen de referencia.",
+    gallery:["🏋️","🔑","🏢"]
+  },
+  {
+    id:"eventos",
+    emoji:"🕊️",
+    title:"Recuerdos Comunión",
+    category:"Recuerditos",
+    tag:"Evento",
+    price:"Desde $18",
+    description:"Detalles personalizados para Primera Comunión.",
+    custom:"Nombre, fecha, colores y temática religiosa.",
+    time:"Según cantidad.",
+    note:"Ideal para pedidos por volumen.",
+    gallery:["🕊️","✝️","🎁"]
+  },
+  {
+    emoji:"👶",
+    title:"Recuerdos Bautizo",
+    category:"Recuerditos",
+    tag:"Evento",
+    price:"Desde $18",
+    description:"Detalles personalizados para bautizo.",
+    custom:"Nombre, fecha, color y figura.",
+    time:"Según cantidad.",
+    note:"Se puede adaptar a niño o niña.",
+    gallery:["👶","🕊️","🎁"]
+  },
+  {
+    emoji:"🎂",
+    title:"Recuerdos cumpleaños",
+    category:"Recuerditos",
+    tag:"Evento",
+    price:"Cotizar",
+    description:"Recuerdos personalizados para cumpleaños con temática especial.",
+    custom:"Nombre, edad, personaje, color y tema.",
+    time:"Según diseño.",
+    note:"No incluye licencias oficiales; diseño inspirado bajo pedido.",
+    gallery:["🎂","🎉","🎁"]
+  },
+  {
+    emoji:"🎀",
+    title:"Recuerdos baby shower",
+    category:"Recuerditos",
+    tag:"Evento",
+    price:"Cotizar",
+    description:"Detalles personalizados para baby shower.",
+    custom:"Nombre, fecha, color y temática.",
+    time:"Según cantidad.",
+    note:"Disponible en tonos pastel.",
+    gallery:["🎀","👶","🎁"]
+  },
+  {
+    id:"decoracion",
+    emoji:"🔤",
+    title:"Letras personalizadas",
+    category:"Decoración",
+    tag:"Decoración",
+    price:"Desde $180",
+    description:"Nombres, iniciales y letras decorativas en impresión 3D.",
+    custom:"Nombre, colores, tamaño y temática.",
+    time:"Según tamaño y diseño.",
+    note:"Precio cambia por medida y cantidad de colores.",
+    gallery:["🔤","🎨","✨"]
+  },
+  {
+    emoji:"🪄",
+    title:"Varita Mágica Pago",
+    category:"Decoración",
+    tag:"Temático",
+    price:"$180",
+    description:"Accesorio temático personalizado tipo varita mágica.",
+    custom:"Color, nombre y detalles.",
+    time:"Según disponibilidad.",
+    note:"Ideal para fiestas o regalos.",
+    gallery:["🪄","✨","🎁"]
+  },
+  {
+    emoji:"🍷",
+    title:"Porta Vinos",
+    category:"Regalos",
+    tag:"Regalo",
+    price:"$225",
+    description:"Porta botella personalizado para regalo o decoración.",
+    custom:"Nombre, frase, color o logo.",
+    time:"Según diseño.",
+    note:"Botella no incluida.",
+    gallery:["🍷","🎁","✨"]
+  },
+  {
+    emoji:"🏅",
+    title:"Medallero",
+    category:"Decoración",
+    tag:"Decoración",
+    price:"$140",
+    description:"Diseño personalizado para colgar medallas.",
+    custom:"Nombre, deporte, color y tamaño.",
+    time:"Según diseño.",
+    note:"Puede variar por tamaño.",
+    gallery:["🏅","🏆","🏃"]
+  },
+  {
+    emoji:"🖼️",
+    title:"Porta Retratos MINI",
+    category:"Regalos",
+    tag:"Regalo",
+    price:"$120",
+    description:"Porta retrato pequeño personalizado.",
+    custom:"Color, nombre y estilo.",
+    time:"Según disponibilidad.",
+    note:"Foto no incluida.",
+    gallery:["🖼️","📸","🎁"]
+  },
+  {
+    emoji:"📲",
+    title:"Display NFC",
+    category:"Negocio",
+    tag:"Negocio",
+    price:"Desde $480",
+    description:"Display personalizado para negocio, redes sociales o contenido digital.",
+    custom:"Logo, colores, texto y enlace NFC.",
+    time:"Según diseño.",
+    note:"Chip NFC puede variar según disponibilidad.",
+    gallery:["📲","🏢","✨"]
+  },
+  {
+    id:"mascotas",
+    emoji:"🐾",
+    title:"Placas Mascotas",
+    category:"Mascotas",
+    tag:"Mascotas",
+    price:"Desde $65",
+    description:"Placas personalizadas para perros y gatos.",
+    custom:"Nombre, teléfono, forma, color y tamaño.",
+    time:"Según diseño.",
+    note:"Puede incluir número de contacto.",
+    gallery:["🐾","🐶","🐱"]
+  }
+];
+
+const container = document.getElementById("productsContainer");
+
+products.forEach((p, index) => {
+  const card = document.createElement("div");
+  card.className = "product";
+  if(p.id) card.id = p.id;
+
+  card.innerHTML = `
+    <div class="product-img">${p.emoji}</div>
+    <span class="tag">${p.tag}</span>
+    <h3>${p.title}</h3>
+    <p>${p.description}</p>
+    <div class="price">${p.price}</div>
+    <button class="btn btn-secondary" onclick="openModal(${index}); event.stopPropagation();">Ver detalles</button>
+  `;
+
+  card.onclick = () => openModal(index);
+  container.appendChild(card);
+});
+
+function openModal(index){
+  const p = products[index];
+
+  document.getElementById("modalEmoji").innerText = p.emoji;
+  document.getElementById("modalTitle").innerText = p.title;
+  document.getElementById("modalPrice").innerText = p.price;
+  document.getElementById("modalDescription").innerText = p.description;
+  document.getElementById("modalCategory").innerText = p.category;
+  document.getElementById("modalCustom").innerText = p.custom;
+  document.getElementById("modalTime").innerText = p.time;
+  document.getElementById("modalNote").innerText = p.note;
+
+  const gallery = document.getElementById("modalGallery");
+  gallery.innerHTML = "";
+  p.gallery.forEach(item => {
+    const div = document.createElement("div");
+    div.innerText = item;
+    gallery.appendChild(div);
+  });
+
+  const text = encodeURIComponent(`Hola, quiero pedir o cotizar este producto: ${p.title}`);
+  document.getElementById("modalWhatsapp").href = `https://wa.me/${phone}?text=${text}`;
+
+  document.getElementById("productModal").style.display = "block";
+}
+
+function closeModal(){
+  document.getElementById("productModal").style.display = "none";
+}
+
+window.onclick = function(event){
+  const modal = document.getElementById("productModal");
+  if(event.target === modal){
+    closeModal();
+  }
+}
+</script>
 
 </body>
 </html>
