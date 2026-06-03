@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MaviMaker | Catálogo 3D</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;background:#fff9fc;color:#2b2b2b}
+body{font-family:Arial,Helvetica,sans-serif;background:#fff9fc;color:#2b2b2b}
 
 header{
   position:sticky;top:0;z-index:100;background:#fff;
@@ -17,100 +17,92 @@ header{
 }
 
 .logo-box{
-  background:#222;
-  border-radius:20px;
-  padding:12px 22px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  background:#222;border-radius:20px;padding:12px 22px;
+  display:flex;align-items:center;justify-content:center;
   box-shadow:0 5px 18px rgba(0,0,0,.25)
 }
 
-.logo-box img{
-  height:78px;
-  width:auto;
-  max-width:320px;
-  object-fit:contain;
-  display:block;
-}
+.logo-box img{height:72px;width:auto;max-width:310px;object-fit:contain;display:block}
 
-nav{display:flex;gap:20px;flex-wrap:wrap;font-weight:700}
+nav{display:flex;gap:18px;flex-wrap:wrap;font-weight:700}
 nav a{text-decoration:none;color:#444}
 nav a:hover{color:#e85ca0}
 
 .hero{
   background:linear-gradient(135deg,#ffe2f1,#e6faff,#f2ffe8);
-  padding:70px 7%;
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  gap:40px;
-  align-items:center;
+  padding:65px 7%;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center
 }
 
 .hero h1{font-size:50px;line-height:1.05;margin-bottom:18px}
 .hero p{font-size:20px;line-height:1.5;color:#555;margin-bottom:26px}
 
 .hero-card{
-  background:white;border-radius:34px;padding:30px;text-align:center;
+  background:#fff;border-radius:34px;padding:26px;text-align:center;
   box-shadow:0 12px 35px rgba(0,0,0,.12)
 }
 
-.hero-card .logo-box{margin:0 auto 20px auto}
+.hero-card .logo-box{margin:0 auto 18px auto}
 
 .btn{
-  display:inline-block;background:#25d366;color:white;
-  padding:13px 23px;border-radius:999px;text-decoration:none;
+  display:inline-block;background:#25d366;color:#fff;
+  padding:12px 21px;border-radius:999px;text-decoration:none;
   font-weight:800;border:none;cursor:pointer;
   box-shadow:0 5px 15px rgba(0,0,0,.18)
 }
 
-.btn-secondary{
-  background:#e85ca0;
-}
+.btn-pink{background:#e85ca0}
 
-section{padding:58px 7%}
+section{padding:55px 7%}
 .section-title{text-align:center;font-size:36px;margin-bottom:10px}
-.section-subtitle{text-align:center;color:#777;margin-bottom:35px}
+.section-subtitle{text-align:center;color:#777;margin-bottom:30px}
 
 .categories{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-  gap:18px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:16px
 }
 
 .category{
-  background:white;border-radius:24px;padding:24px 12px;text-align:center;
+  background:#fff;border-radius:24px;padding:22px 12px;text-align:center;
   font-weight:800;box-shadow:0 6px 20px rgba(0,0,0,.08);
   border:2px solid #f6e7f0;text-decoration:none;color:#333
 }
 
 .category span{display:block;font-size:34px;margin-bottom:8px}
 
+.controls{
+  display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-bottom:30px
+}
+
+.search{
+  padding:14px 18px;border:2px solid #f3dce8;border-radius:999px;
+  min-width:280px;font-size:15px;outline:none
+}
+
+.filter-btn{
+  border:none;background:#fff;border:2px solid #f3dce8;
+  padding:12px 18px;border-radius:999px;cursor:pointer;font-weight:800;color:#555
+}
+
+.filter-btn.active,.filter-btn:hover{background:#e85ca0;color:#fff;border-color:#e85ca0}
+
 .products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:25px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:25px
 }
 
 .product{
-  background:white;border-radius:28px;padding:18px;text-align:center;
+  background:#fff;border-radius:28px;padding:18px;text-align:center;
   box-shadow:0 7px 22px rgba(0,0,0,.1);
-  border:1px solid #f3edf2;
-  cursor:pointer;
-  transition:.2s;
+  border:1px solid #f3edf2;cursor:pointer;transition:.2s
 }
 
-.product:hover{
-  transform:translateY(-5px);
-  box-shadow:0 12px 28px rgba(0,0,0,.15);
-}
+.product:hover{transform:translateY(-5px);box-shadow:0 12px 28px rgba(0,0,0,.15)}
 
 .product-img{
-  height:205px;border-radius:22px;
-  background:linear-gradient(135deg,#fff0f7,#e9fbff,#f3ffe7);
+  height:220px;border-radius:22px;background:#f7f7f7;
   display:flex;align-items:center;justify-content:center;
-  font-size:70px;margin-bottom:14px
+  overflow:hidden;margin-bottom:14px
 }
+
+.product-img img{width:100%;height:100%;object-fit:cover}
 
 .tag{
   display:inline-block;background:#fff3c4;color:#8a6b00;
@@ -129,117 +121,66 @@ section{padding:58px 7%}
 }
 
 footer{
-  background:#2d2d2d;color:white;text-align:center;
+  background:#2d2d2d;color:#fff;text-align:center;
   padding:35px 7%;line-height:1.7
 }
 
 .whatsapp-float{
   position:fixed;right:22px;bottom:22px;width:64px;height:64px;
-  border-radius:50%;background:#25d366;color:white;
+  border-radius:50%;background:#25d366;color:#fff;
   display:flex;align-items:center;justify-content:center;
-  font-size:34px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.3);
-  z-index:200
+  font-size:34px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.3);z-index:200
 }
 
-/* MODAL */
 .modal{
-  display:none;
-  position:fixed;
-  z-index:500;
-  left:0;top:0;
-  width:100%;height:100%;
-  background:rgba(0,0,0,.55);
-  padding:20px;
-  overflow:auto;
+  display:none;position:fixed;z-index:500;left:0;top:0;width:100%;height:100%;
+  background:rgba(0,0,0,.55);padding:20px;overflow:auto
 }
 
 .modal-content{
-  background:#fff;
-  max-width:950px;
-  margin:35px auto;
-  border-radius:30px;
-  padding:25px;
-  position:relative;
-  box-shadow:0 12px 35px rgba(0,0,0,.25);
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:25px;
+  background:#fff;max-width:980px;margin:35px auto;border-radius:30px;
+  padding:25px;position:relative;box-shadow:0 12px 35px rgba(0,0,0,.25);
+  display:grid;grid-template-columns:1fr 1fr;gap:25px
 }
 
 .close{
-  position:absolute;
-  right:22px;
-  top:18px;
-  font-size:34px;
-  cursor:pointer;
-  font-weight:bold;
-  color:#555;
+  position:absolute;right:22px;top:18px;font-size:34px;
+  cursor:pointer;font-weight:bold;color:#555
 }
 
 .modal-main-img{
-  height:330px;
-  border-radius:25px;
-  background:linear-gradient(135deg,#fff0f7,#e9fbff,#f3ffe7);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:110px;
-  margin-bottom:15px;
+  height:360px;border-radius:25px;background:#f7f7f7;
+  display:flex;justify-content:center;align-items:center;overflow:hidden;margin-bottom:15px
 }
 
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-}
+.modal-main-img img{width:100%;height:100%;object-fit:contain}
+
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 
 .gallery div{
-  height:90px;
-  border-radius:16px;
-  background:#f7f7f7;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:38px;
-  border:2px solid #f0e4ec;
+  height:90px;border-radius:16px;background:#f7f7f7;overflow:hidden;
+  border:2px solid #f0e4ec;cursor:pointer
 }
 
-.modal-info h2{
-  font-size:32px;
-  margin-bottom:10px;
-  padding-right:35px;
-}
+.gallery img{width:100%;height:100%;object-fit:cover}
 
-.modal-info p{
-  color:#666;
-  line-height:1.5;
-  margin-bottom:14px;
-}
+.modal-info h2{font-size:32px;margin-bottom:10px;padding-right:35px}
+.modal-info p{color:#666;line-height:1.5;margin-bottom:14px}
 
 .info-box{
-  background:#fff7fb;
-  padding:14px;
-  border-radius:18px;
-  margin-bottom:12px;
-  border:1px solid #f3dce8;
+  background:#fff7fb;padding:14px;border-radius:18px;
+  margin-bottom:12px;border:1px solid #f3dce8
 }
 
-.info-box strong{color:#333}
-
-.modal-price{
-  font-size:28px;
-  font-weight:900;
-  color:#e85ca0;
-  margin:15px 0;
-}
+.modal-price{font-size:28px;font-weight:900;color:#e85ca0;margin:15px 0}
 
 @media(max-width:850px){
   header{flex-direction:column}
-  .logo-box img{height:65px}
+  .logo-box img{height:62px}
   .hero{grid-template-columns:1fr;text-align:center;padding:45px 6%}
   .hero h1{font-size:38px}
   .modal-content{grid-template-columns:1fr}
-  .modal-main-img{height:250px}
+  .modal-main-img{height:280px}
 }
 </style>
 </head>
@@ -265,7 +206,7 @@ footer{
 <section class="hero">
   <div>
     <h1>Detalles personalizados en impresión 3D</h1>
-    <p>Recuerdos, llaveros, porta latas, letreros, placas, accesorios y diseños personalizados para eventos, negocios y regalos especiales.</p>
+    <p>Recuerdos, llaveros, porta bebidas, placas, accesorios y diseños personalizados para eventos, negocios y regalos especiales.</p>
     <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20hacer%20un%20pedido%20personalizado%20con%20MaviMaker" target="_blank">Pedir por WhatsApp</a>
   </div>
 
@@ -280,23 +221,33 @@ footer{
 
 <section id="categorias">
   <h2 class="section-title">Categorías</h2>
-  <p class="section-subtitle">Toca una categoría para ir a sus productos.</p>
+  <p class="section-subtitle">Toca una categoría para filtrar los productos.</p>
 
   <div class="categories">
-    <a class="category" href="#porta-latas"><span>🥤</span>Porta latas</a>
-    <a class="category" href="#llaveros"><span>🔑</span>Llaveros</a>
-    <a class="category" href="#eventos"><span>🎁</span>Recuerditos</a>
-    <a class="category" href="#accesorios"><span>💅</span>Accesorios</a>
-    <a class="category" href="#decoracion"><span>✨</span>Decoración</a>
-    <a class="category" href="#mascotas"><span>🐾</span>Mascotas</a>
+    <a class="category" href="#catalogo" onclick="filterProducts('Porta bebidas')"><span>🥤</span>Porta bebidas</a>
+    <a class="category" href="#catalogo" onclick="filterProducts('Llaveros')"><span>🔑</span>Llaveros</a>
+    <a class="category" href="#catalogo" onclick="filterProducts('Accesorios')"><span>💅</span>Accesorios</a>
+    <a class="category" href="#catalogo" onclick="filterProducts('Recuerdos')"><span>🎁</span>Recuerdos</a>
+    <a class="category" href="#catalogo" onclick="filterProducts('Mascotas')"><span>🐾</span>Mascotas</a>
+    <a class="category" href="#catalogo" onclick="filterProducts('Negocios')"><span>📲</span>Negocios</a>
   </div>
 </section>
 
 <section id="catalogo">
-<h2 class="section-title">Catálogo destacado</h2>
-<p class="section-subtitle">Toca cualquier producto para ver más detalles y fotos.</p>
+  <h2 class="section-title">Catálogo</h2>
+  <p class="section-subtitle">Toca cualquier producto para ver más detalles y pedir por WhatsApp.</p>
 
-<div class="products" id="productsContainer"></div>
+  <div class="controls">
+    <input class="search" id="searchInput" type="text" placeholder="Buscar producto..." oninput="renderProducts()">
+    <button class="filter-btn active" onclick="filterProducts('Todos')">Todos</button>
+    <button class="filter-btn" onclick="filterProducts('Llaveros')">Llaveros</button>
+    <button class="filter-btn" onclick="filterProducts('Accesorios')">Accesorios</button>
+    <button class="filter-btn" onclick="filterProducts('Recuerdos')">Recuerdos</button>
+    <button class="filter-btn" onclick="filterProducts('Mascotas')">Mascotas</button>
+    <button class="filter-btn" onclick="filterProducts('Negocios')">Negocios</button>
+  </div>
+
+  <div class="products" id="productsContainer"></div>
 </section>
 
 <section id="personalizados">
@@ -322,7 +273,7 @@ footer{
     <span class="close" onclick="closeModal()">&times;</span>
 
     <div>
-      <div class="modal-main-img" id="modalEmoji">🥤</div>
+      <div class="modal-main-img" id="modalMainImage"></div>
       <div class="gallery" id="modalGallery"></div>
     </div>
 
@@ -343,316 +294,266 @@ footer{
 
 <script>
 const phone = "5218147899927";
+let currentFilter = "Todos";
 
 const products = [
   {
-    id:"porta-latas",
-    emoji:"🥤",
-    title:"Porta latas personalizado",
-    category:"Porta latas",
-    tag:"Porta latas",
-    price:"$280",
-    description:"Porta latas personalizado en impresión 3D. Ideal para eventos, negocios, regalos y promociones.",
-    custom:"Nombre, colores, frase, logo o temática.",
-    time:"Depende del diseño y cantidad.",
-    note:"Accesorios adicionales pueden tener costo extra.",
-    gallery:["🥤","🎨","🎁"]
-  },
-  {
-    emoji:"🥤",
-    title:"Porta latas mayoreo",
-    category:"Porta latas",
-    tag:"Mayoreo",
-    price:"Desde $199",
-    description:"Precio especial para pedidos por volumen. Ideal para eventos, empresas y recuerdos personalizados.",
-    custom:"Nombre, logo, evento, colores y diseño.",
-    time:"Según cantidad solicitada.",
-    note:"Precio puede variar por diseño y accesorios.",
-    gallery:["🥤","📦","🎉"]
-  },
-  {
-    id:"accesorios",
-    emoji:"💅",
-    title:"Abre latas Nails V2",
+    title:"Abre latas esmalte personalizado",
+    image:"assets/productos/ABRE LATAS ESMALTE PERZONALIZADO.jpeg",
     category:"Accesorios",
     tag:"Accesorio",
     price:"$65",
-    description:"Accesorio práctico para abrir latas sin dañar uñas. Diseño funcional y personalizable.",
-    custom:"Color y nombre opcional.",
-    time:"Según disponibilidad.",
-    note:"Ideal para venta individual o como complemento.",
-    gallery:["💅","🥫","✨"]
+    description:"Abre latas personalizado en forma de esmalte. Práctico, bonito y funcional.",
+    custom:"Color, nombre o texto.",
+    time:"1 a 3 días.",
+    note:"Ideal para uso personal o regalo.",
+    gallery:["assets/productos/ABRE LATAS ESMALTE PERZONALIZADO.jpeg"]
   },
   {
-    emoji:"🎀",
-    title:"Abre latas Moño",
+    title:"Abre latas espejo personalizado",
+    image:"assets/productos/ABRE LATAS ESPEJO PERZONALIZADO.jpeg",
     category:"Accesorios",
     tag:"Accesorio",
     price:"$85",
-    description:"Abre latas con diseño de moño, bonito y funcional para regalo o uso personal.",
+    description:"Diseño tipo espejo para abrir latas sin dañar uñas.",
+    custom:"Color y texto.",
+    time:"1 a 3 días.",
+    note:"Producto ligero y práctico.",
+    gallery:["assets/productos/ABRE LATAS ESPEJO PERZONALIZADO.jpeg"]
+  },
+  {
+    title:"Abre latas moño personalizado",
+    image:"assets/productos/ABRE LATAS MOÑO PERSONALIZADO.jpeg",
+    category:"Accesorios",
+    tag:"Accesorio",
+    price:"$85",
+    description:"Abre latas con diseño de moño, ideal para detalle personalizado.",
     custom:"Color y acabado.",
-    time:"Según disponibilidad.",
-    note:"Puede personalizarse por color.",
-    gallery:["🎀","💅","🥫"]
+    time:"1 a 3 días.",
+    note:"Disponible en varios colores.",
+    gallery:["assets/productos/ABRE LATAS MOÑO PERSONALIZADO.jpeg"]
   },
   {
-    emoji:"🪞",
-    title:"Abre lata espejo",
-    category:"Accesorios",
-    tag:"Accesorio",
-    price:"$85",
-    description:"Accesorio práctico con diseño tipo espejo para abrir latas.",
-    custom:"Color y detalles.",
-    time:"Según disponibilidad.",
-    note:"Producto ligero y funcional.",
-    gallery:["🪞","💅","✨"]
+    title:"Display NFC",
+    image:"assets/productos/DISPLAYNFC.jpeg",
+    category:"Negocios",
+    tag:"Negocio",
+    price:"Desde $480",
+    description:"Display NFC para negocios, redes sociales, pagos, menú digital o enlaces personalizados.",
+    custom:"Logo, colores, QR, redes y enlace NFC.",
+    time:"2 a 5 días.",
+    note:"Ideal para negocios, estética, restaurantes y emprendedores.",
+    gallery:["assets/productos/DISPLAYNFC.jpeg"]
   },
   {
-    emoji:"👠",
-    title:"Abre lata Zapatilla",
-    category:"Accesorios",
-    tag:"Accesorio",
-    price:"$45",
-    description:"Diseño creativo en forma de zapatilla. Ideal como detalle económico.",
-    custom:"Color a elegir.",
-    time:"Según disponibilidad.",
-    note:"Precio sujeto a diseño final.",
-    gallery:["👠","🥫","🎁"]
-  },
-  {
-    id:"llaveros",
-    emoji:"🔑",
     title:"Llavero Instax MINI",
+    image:"assets/productos/INSTAXMINI.jpeg",
     category:"Llaveros",
     tag:"Llavero",
     price:"$120",
-    description:"Llavero personalizado para foto estilo Instax Mini.",
-    custom:"Foto, nombre, color y frase.",
-    time:"Depende de archivo/foto proporcionada.",
-    note:"La foto debe enviarse por WhatsApp.",
-    gallery:["🔑","📸","🖼️"]
+    description:"Llavero tipo cámara Instax Mini con foto personalizada.",
+    custom:"Foto, color, nombre o frase.",
+    time:"2 a 4 días.",
+    note:"La foto se envía por WhatsApp.",
+    gallery:["assets/productos/INSTAXMINI.jpeg"]
   },
   {
-    emoji:"📸",
     title:"Llavero Instax XL",
+    image:"assets/productos/INSTAX_XL.jpeg",
     category:"Llaveros",
     tag:"Llavero",
     price:"$160",
     description:"Versión grande tipo Instax para foto personalizada.",
-    custom:"Foto, nombre, color y frase.",
-    time:"Depende de archivo/foto proporcionada.",
-    note:"Ideal para regalo personalizado.",
-    gallery:["📸","🔑","🎁"]
+    custom:"Foto, color, nombre o frase.",
+    time:"2 a 4 días.",
+    note:"La foto se envía por WhatsApp.",
+    gallery:["assets/productos/INSTAX_XL.jpeg"]
   },
   {
-    emoji:"🏷️",
-    title:"Llaveros Nombres",
+    title:"Llavero nombre V2",
+    image:"assets/productos/LLAVERO NOMBRE V2.jpeg",
     category:"Llaveros",
     tag:"Llavero",
     price:"$85",
-    description:"Llaveros personalizados con nombre, colores y estilo a elegir.",
-    custom:"Nombre y combinación de colores.",
-    time:"Según cantidad.",
-    note:"Disponible para pedidos individuales o por volumen.",
-    gallery:["🏷️","🔑","🎨"]
+    description:"Llavero personalizado con nombre y combinación de colores.",
+    custom:"Nombre y colores.",
+    time:"1 a 3 días.",
+    note:"Disponible en diferentes estilos.",
+    gallery:["assets/productos/LLAVERO NOMBRE V2.jpeg"]
   },
   {
-    emoji:"💧",
-    title:"Llavero Tipo Owala",
+    title:"Llaveros nombres",
+    image:"assets/productos/LLAVEROS NOMBRES.jpeg",
+    category:"Llaveros",
+    tag:"Llavero",
+    price:"$85",
+    description:"Llaveros con nombre personalizados para regalo, evento o uso diario.",
+    custom:"Nombre, color y estilo.",
+    time:"1 a 3 días.",
+    note:"Precio puede variar por tamaño.",
+    gallery:["assets/productos/LLAVEROS NOMBRES.jpeg"]
+  },
+  {
+    title:"Mini llavero Owala",
+    image:"assets/productos/MINIOWALA.jpeg",
     category:"Llaveros",
     tag:"Llavero",
     price:"$120",
-    description:"Llavero personalizado para termo o botella tipo Owala.",
-    custom:"Nombre, color y diseño.",
-    time:"Según disponibilidad.",
-    note:"Compatible con distintos estilos de termo.",
-    gallery:["💧","🔑","🥤"]
+    description:"Mini llavero tipo Owala para termo o mochila.",
+    custom:"Color, nombre y combinación.",
+    time:"1 a 3 días.",
+    note:"Ideal para fans de termos personalizados.",
+    gallery:["assets/productos/MINIOWALA.jpeg"]
   },
   {
-    emoji:"🔑",
-    title:"Llavero personalizado",
-    category:"Llaveros",
-    tag:"Llavero",
-    price:"Desde $18",
-    description:"Llaveros personalizados con nombre, logo, frase o temática.",
-    custom:"Nombre, logo, temática, forma y colores.",
-    time:"Según diseño y cantidad.",
-    note:"Precio desde mayoreo o piezas sencillas pequeñas.",
-    gallery:["🔑","🎨","📦"]
-  },
-  {
-    emoji:"🏋️",
-    title:"Llavero con logo",
-    category:"Llaveros",
-    tag:"Negocio",
-    price:"Cotizar",
-    description:"Llaveros con logo para marcas, gimnasios, negocios o eventos.",
-    custom:"Logo, color, tamaño y cantidad.",
-    time:"Según diseño y volumen.",
-    note:"Se requiere logo o imagen de referencia.",
-    gallery:["🏋️","🔑","🏢"]
-  },
-  {
-    id:"eventos",
-    emoji:"🕊️",
-    title:"Recuerdos Comunión",
-    category:"Recuerditos",
-    tag:"Evento",
-    price:"Desde $18",
-    description:"Detalles personalizados para Primera Comunión.",
-    custom:"Nombre, fecha, colores y temática religiosa.",
-    time:"Según cantidad.",
-    note:"Ideal para pedidos por volumen.",
-    gallery:["🕊️","✝️","🎁"]
-  },
-  {
-    emoji:"👶",
-    title:"Recuerdos Bautizo",
-    category:"Recuerditos",
-    tag:"Evento",
-    price:"Desde $18",
-    description:"Detalles personalizados para bautizo.",
-    custom:"Nombre, fecha, color y figura.",
-    time:"Según cantidad.",
-    note:"Se puede adaptar a niño o niña.",
-    gallery:["👶","🕊️","🎁"]
-  },
-  {
-    emoji:"🎂",
-    title:"Recuerdos cumpleaños",
-    category:"Recuerditos",
-    tag:"Evento",
-    price:"Cotizar",
-    description:"Recuerdos personalizados para cumpleaños con temática especial.",
-    custom:"Nombre, edad, personaje, color y tema.",
-    time:"Según diseño.",
-    note:"No incluye licencias oficiales; diseño inspirado bajo pedido.",
-    gallery:["🎂","🎉","🎁"]
-  },
-  {
-    emoji:"🎀",
-    title:"Recuerdos baby shower",
-    category:"Recuerditos",
-    tag:"Evento",
-    price:"Cotizar",
-    description:"Detalles personalizados para baby shower.",
-    custom:"Nombre, fecha, color y temática.",
-    time:"Según cantidad.",
-    note:"Disponible en tonos pastel.",
-    gallery:["🎀","👶","🎁"]
-  },
-  {
-    id:"decoracion",
-    emoji:"🔤",
-    title:"Letras personalizadas",
-    category:"Decoración",
-    tag:"Decoración",
-    price:"Desde $180",
-    description:"Nombres, iniciales y letras decorativas en impresión 3D.",
-    custom:"Nombre, colores, tamaño y temática.",
-    time:"Según tamaño y diseño.",
-    note:"Precio cambia por medida y cantidad de colores.",
-    gallery:["🔤","🎨","✨"]
-  },
-  {
-    emoji:"🪄",
-    title:"Varita Mágica Pago",
-    category:"Decoración",
-    tag:"Temático",
-    price:"$180",
-    description:"Accesorio temático personalizado tipo varita mágica.",
-    custom:"Color, nombre y detalles.",
-    time:"Según disponibilidad.",
-    note:"Ideal para fiestas o regalos.",
-    gallery:["🪄","✨","🎁"]
-  },
-  {
-    emoji:"🍷",
-    title:"Porta Vinos",
-    category:"Regalos",
-    tag:"Regalo",
-    price:"$225",
-    description:"Porta botella personalizado para regalo o decoración.",
-    custom:"Nombre, frase, color o logo.",
-    time:"Según diseño.",
-    note:"Botella no incluida.",
-    gallery:["🍷","🎁","✨"]
-  },
-  {
-    emoji:"🏅",
     title:"Medallero",
+    image:"assets/productos/MEDALLERO.jpeg",
     category:"Decoración",
     tag:"Decoración",
     price:"$140",
-    description:"Diseño personalizado para colgar medallas.",
+    description:"Medallero personalizado para colgar medallas deportivas.",
     custom:"Nombre, deporte, color y tamaño.",
-    time:"Según diseño.",
-    note:"Puede variar por tamaño.",
-    gallery:["🏅","🏆","🏃"]
+    time:"2 a 4 días.",
+    note:"Precio puede variar por medida.",
+    gallery:["assets/productos/MEDALLERO.jpeg"]
   },
   {
-    emoji:"🖼️",
-    title:"Porta Retratos MINI",
-    category:"Regalos",
-    tag:"Regalo",
-    price:"$120",
-    description:"Porta retrato pequeño personalizado.",
-    custom:"Color, nombre y estilo.",
-    time:"Según disponibilidad.",
-    note:"Foto no incluida.",
-    gallery:["🖼️","📸","🎁"]
+    title:"Nombres personalizados",
+    image:"assets/productos/NOMBRES VOLUMEN VARIOS TAMAÑOS.jpeg",
+    category:"Decoración",
+    tag:"Decoración",
+    price:"Desde $180",
+    description:"Nombres decorativos en impresión 3D para habitación, mesa de dulces o regalo.",
+    custom:"Nombre, color, tamaño y temática.",
+    time:"2 a 5 días.",
+    note:"Precio cambia según tamaño y colores.",
+    gallery:["assets/productos/NOMBRES VOLUMEN VARIOS TAMAÑOS.jpeg"]
   },
   {
-    emoji:"📲",
-    title:"Display NFC",
-    category:"Negocio",
-    tag:"Negocio",
-    price:"Desde $480",
-    description:"Display personalizado para negocio, redes sociales o contenido digital.",
-    custom:"Logo, colores, texto y enlace NFC.",
-    time:"Según diseño.",
-    note:"Chip NFC puede variar según disponibilidad.",
-    gallery:["📲","🏢","✨"]
-  },
-  {
-    id:"mascotas",
-    emoji:"🐾",
-    title:"Placas Mascotas",
+    title:"Placas mascotas huesito",
+    image:"assets/productos/PLACAS MASCOTAS HUESITO.jpeg",
     category:"Mascotas",
     tag:"Mascotas",
     price:"Desde $65",
-    description:"Placas personalizadas para perros y gatos.",
-    custom:"Nombre, teléfono, forma, color y tamaño.",
-    time:"Según diseño.",
-    note:"Puede incluir número de contacto.",
-    gallery:["🐾","🐶","🐱"]
+    description:"Placas para mascota en forma de huesito con nombre y teléfono.",
+    custom:"Nombre, teléfono, colores y tamaño.",
+    time:"1 a 3 días.",
+    note:"Ideal para perros y gatos.",
+    gallery:["assets/productos/PLACAS MASCOTAS HUESITO.jpeg"]
+  },
+  {
+    title:"Porta bebidas personalizado",
+    image:"assets/productos/PORTA BEBIDAS PERZONALIZADO.jpeg",
+    category:"Porta bebidas",
+    tag:"Porta bebidas",
+    price:"$280",
+    description:"Porta bebidas personalizado en impresión 3D, ideal para eventos y regalos.",
+    custom:"Nombre, colores, temática y accesorios.",
+    time:"2 a 5 días.",
+    note:"Accesorios adicionales pueden tener costo extra.",
+    gallery:["assets/productos/PORTA BEBIDAS PERZONALIZADO.jpeg"]
+  },
+  {
+    title:"Porta celular",
+    image:"assets/productos/PORTA CELULAR.jpeg",
+    category:"Hogar",
+    tag:"Hogar",
+    price:"Cotizar",
+    description:"Soporte para celular impreso en 3D.",
+    custom:"Color y tamaño.",
+    time:"1 a 3 días.",
+    note:"Precio según diseño.",
+    gallery:["assets/productos/PORTA CELULAR.jpeg"]
+  },
+  {
+    title:"Porta vino",
+    image:"assets/productos/PORTA VINO.jpeg",
+    category:"Regalos",
+    tag:"Regalo",
+    price:"$225",
+    description:"Porta vino personalizado para regalo o decoración.",
+    custom:"Color, nombre, frase o logo.",
+    time:"2 a 4 días.",
+    note:"Botella no incluida.",
+    gallery:["assets/productos/PORTA VINO.jpeg"]
+  },
+  {
+    title:"Recuerdo Bautizo",
+    image:"assets/productos/RECUERDO BAUTIZO.jpeg",
+    category:"Recuerdos",
+    tag:"Evento",
+    price:"Desde $18",
+    description:"Recuerdos personalizados para bautizo.",
+    custom:"Nombre, fecha, color y temática.",
+    time:"Según cantidad.",
+    note:"Ideal para pedidos por volumen.",
+    gallery:["assets/productos/RECUERDO BAUTIZO.jpeg"]
+  },
+  {
+    title:"Recuerdo Comunión Ángel",
+    image:"assets/productos/RECUERDO COMUNION ANGEL.jpeg",
+    category:"Recuerdos",
+    tag:"Evento",
+    price:"Desde $18",
+    description:"Recuerdo tipo ángel para Primera Comunión.",
+    custom:"Nombre, fecha, color y tarjeta.",
+    time:"Según cantidad.",
+    note:"Se puede adaptar a bautizo o comunión.",
+    gallery:["assets/productos/RECUERDO COMUNION ANGEL.jpeg"]
   }
 ];
 
 const container = document.getElementById("productsContainer");
 
-products.forEach((p, index) => {
-  const card = document.createElement("div");
-  card.className = "product";
-  if(p.id) card.id = p.id;
+function renderProducts(){
+  const search = document.getElementById("searchInput").value.toLowerCase();
+  container.innerHTML = "";
 
-  card.innerHTML = `
-    <div class="product-img">${p.emoji}</div>
-    <span class="tag">${p.tag}</span>
-    <h3>${p.title}</h3>
-    <p>${p.description}</p>
-    <div class="price">${p.price}</div>
-    <button class="btn btn-secondary" onclick="openModal(${index}); event.stopPropagation();">Ver detalles</button>
-  `;
+  const filtered = products.filter(p => {
+    const matchCategory = currentFilter === "Todos" || p.category === currentFilter;
+    const matchSearch = p.title.toLowerCase().includes(search) || p.category.toLowerCase().includes(search);
+    return matchCategory && matchSearch;
+  });
 
-  card.onclick = () => openModal(index);
-  container.appendChild(card);
-});
+  filtered.forEach((p) => {
+    const originalIndex = products.indexOf(p);
+    const card = document.createElement("div");
+    card.className = "product";
+    card.onclick = () => openModal(originalIndex);
+
+    card.innerHTML = `
+      <div class="product-img">
+        <img src="${p.image}" alt="${p.title}" onerror="this.src='assets/logo-mavimaker.svg'; this.style.background='#222'; this.style.padding='25px';">
+      </div>
+      <span class="tag">${p.tag}</span>
+      <h3>${p.title}</h3>
+      <p>${p.description}</p>
+      <div class="price">${p.price}</div>
+      <button class="btn btn-pink" onclick="openModal(${originalIndex}); event.stopPropagation();">Ver detalles</button>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function filterProducts(category){
+  currentFilter = category;
+
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.classList.remove("active");
+    if(btn.innerText === category) btn.classList.add("active");
+    if(category === "Todos" && btn.innerText === "Todos") btn.classList.add("active");
+  });
+
+  renderProducts();
+}
 
 function openModal(index){
   const p = products[index];
 
-  document.getElementById("modalEmoji").innerText = p.emoji;
+  document.getElementById("modalMainImage").innerHTML =
+    `<img src="${p.image}" alt="${p.title}" onerror="this.src='assets/logo-mavimaker.svg'; this.style.background='#222'; this.style.padding='25px';">`;
+
   document.getElementById("modalTitle").innerText = p.title;
   document.getElementById("modalPrice").innerText = p.price;
   document.getElementById("modalDescription").innerText = p.description;
@@ -663,9 +564,10 @@ function openModal(index){
 
   const gallery = document.getElementById("modalGallery");
   gallery.innerHTML = "";
-  p.gallery.forEach(item => {
+
+  p.gallery.forEach(img => {
     const div = document.createElement("div");
-    div.innerText = item;
+    div.innerHTML = `<img src="${img}" alt="${p.title}" onclick="changeMainImage('${img}')">`;
     gallery.appendChild(div);
   });
 
@@ -675,16 +577,20 @@ function openModal(index){
   document.getElementById("productModal").style.display = "block";
 }
 
+function changeMainImage(img){
+  document.getElementById("modalMainImage").innerHTML = `<img src="${img}" alt="Producto">`;
+}
+
 function closeModal(){
   document.getElementById("productModal").style.display = "none";
 }
 
 window.onclick = function(event){
   const modal = document.getElementById("productModal");
-  if(event.target === modal){
-    closeModal();
-  }
+  if(event.target === modal){ closeModal(); }
 }
+
+renderProducts();
 </script>
 
 </body>
