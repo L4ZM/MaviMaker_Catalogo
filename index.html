@@ -1,301 +1,147 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MaviMaker | Catálogo 3D</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MaviMaker | Catálogo 3D</title>
 
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:Arial, Helvetica, sans-serif;
-      background:#fff9fc;
-      color:#2b2b2b;
-    }
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:#fff9fc;color:#2b2b2b}
 
-    header{
-      position:sticky;
-      top:0;
-      z-index:100;
-      background:rgba(255,255,255,.95);
-      box-shadow:0 4px 18px rgba(0,0,0,.08);
-      padding:14px 7%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:25px;
-    }
+header{
+  position:sticky;top:0;z-index:100;background:#fff;
+  box-shadow:0 4px 18px rgba(0,0,0,.08);
+  padding:12px 7%;display:flex;align-items:center;justify-content:space-between;gap:20px
+}
 
-    .logo img{
-      height:90px;
-      width:auto;
-      max-width:310px;
-      object-fit:contain;
-      display:block;
-    }
+.logo-box{
+  background:#2b2b2b;
+  border-radius:18px;
+  padding:10px 18px;
+  display:flex;
+  align-items:center;
+}
 
-    nav{
-      display:flex;
-      gap:24px;
-      flex-wrap:wrap;
-      justify-content:center;
-      font-weight:700;
-    }
+.logo-box img{
+  height:75px;
+  width:auto;
+  max-width:300px;
+  object-fit:contain;
+  display:block;
+}
 
-    nav a{
-      text-decoration:none;
-      color:#4b4b4b;
-      font-size:15px;
-    }
+nav{display:flex;gap:20px;flex-wrap:wrap;font-weight:700}
+nav a{text-decoration:none;color:#444}
+nav a:hover{color:#e85ca0}
 
-    nav a:hover{color:#e85ca0}
+.hero{
+  background:linear-gradient(135deg,#ffe2f1,#e6faff,#f2ffe8);
+  padding:70px 7%;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:40px;
+  align-items:center;
+}
 
-    .hero{
-      background:linear-gradient(135deg,#ffe2f1 0%,#e6faff 45%,#f2ffe8 100%);
-      padding:70px 7%;
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      align-items:center;
-      gap:40px;
-    }
+.hero h1{font-size:50px;line-height:1.05;margin-bottom:18px}
+.hero p{font-size:20px;line-height:1.5;color:#555;margin-bottom:26px}
 
-    .hero h1{
-      font-size:52px;
-      line-height:1.05;
-      margin-bottom:18px;
-      color:#303030;
-    }
+.hero-card{
+  background:white;border-radius:34px;padding:30px;text-align:center;
+  box-shadow:0 12px 35px rgba(0,0,0,.12)
+}
 
-    .hero p{
-      font-size:20px;
-      line-height:1.5;
-      color:#555;
-      margin-bottom:26px;
-    }
+.hero-card .logo-box{justify-content:center;margin-bottom:18px}
 
-    .hero-card{
-      background:#ffffff;
-      border-radius:34px;
-      padding:35px;
-      text-align:center;
-      box-shadow:0 12px 35px rgba(0,0,0,.12);
-    }
+.btn{
+  display:inline-block;background:#25d366;color:white;
+  padding:13px 23px;border-radius:999px;text-decoration:none;
+  font-weight:800;box-shadow:0 5px 15px rgba(0,0,0,.18)
+}
 
-    .hero-card img{
-      width:100%;
-      max-height:260px;
-      object-fit:contain;
-      margin-bottom:18px;
-    }
+section{padding:58px 7%}
+.section-title{text-align:center;font-size:36px;margin-bottom:10px}
+.section-subtitle{text-align:center;color:#777;margin-bottom:35px}
 
-    .btn{
-      display:inline-block;
-      background:#25d366;
-      color:#fff;
-      padding:13px 23px;
-      border-radius:999px;
-      text-decoration:none;
-      font-weight:800;
-      box-shadow:0 5px 15px rgba(0,0,0,.18);
-    }
+.categories{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:18px;
+}
 
-    .btn:hover{transform:translateY(-2px)}
+.category{
+  background:white;border-radius:24px;padding:24px 12px;text-align:center;
+  font-weight:800;box-shadow:0 6px 20px rgba(0,0,0,.08);
+  border:2px solid #f6e7f0;text-decoration:none;color:#333
+}
 
-    section{
-      padding:58px 7%;
-    }
+.category span{display:block;font-size:34px;margin-bottom:8px}
 
-    .section-title{
-      text-align:center;
-      font-size:36px;
-      margin-bottom:12px;
-      color:#333;
-    }
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:25px;
+}
 
-    .section-subtitle{
-      text-align:center;
-      color:#777;
-      margin-bottom:35px;
-      font-size:17px;
-    }
+.product{
+  background:white;border-radius:28px;padding:18px;text-align:center;
+  box-shadow:0 7px 22px rgba(0,0,0,.1);
+  border:1px solid #f3edf2
+}
 
-    .categories{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-      gap:18px;
-    }
+.product-img{
+  height:205px;border-radius:22px;
+  background:linear-gradient(135deg,#fff0f7,#e9fbff,#f3ffe7);
+  display:flex;align-items:center;justify-content:center;
+  font-size:70px;margin-bottom:14px
+}
 
-    .category{
-      background:#fff;
-      border-radius:24px;
-      padding:25px 15px;
-      text-align:center;
-      font-weight:800;
-      box-shadow:0 6px 20px rgba(0,0,0,.08);
-      border:2px solid #f6e7f0;
-    }
+.tag{
+  display:inline-block;background:#fff3c4;color:#8a6b00;
+  font-size:12px;font-weight:800;padding:6px 12px;
+  border-radius:999px;margin-bottom:10px
+}
 
-    .category span{
-      display:block;
-      font-size:34px;
-      margin-bottom:8px;
-    }
+.product h3{font-size:19px;margin-bottom:8px}
+.product p{color:#666;font-size:14px;min-height:44px;line-height:1.4;margin-bottom:12px}
+.price{font-size:22px;font-weight:900;color:#e85ca0;margin-bottom:14px}
 
-    .products{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-      gap:25px;
-    }
+.about{
+  background:linear-gradient(135deg,#fff,#f3fbff);
+  border-radius:34px;padding:38px;max-width:1000px;margin:auto;
+  text-align:center;box-shadow:0 8px 25px rgba(0,0,0,.09)
+}
 
-    .product{
-      background:#fff;
-      border-radius:28px;
-      padding:18px;
-      text-align:center;
-      box-shadow:0 7px 22px rgba(0,0,0,.1);
-      border:1px solid #f3edf2;
-      transition:.2s;
-    }
+footer{
+  background:#2d2d2d;color:white;text-align:center;
+  padding:35px 7%;line-height:1.7
+}
 
-    .product:hover{
-      transform:translateY(-4px);
-      box-shadow:0 12px 30px rgba(0,0,0,.14);
-    }
+.whatsapp-float{
+  position:fixed;right:22px;bottom:22px;width:64px;height:64px;
+  border-radius:50%;background:#25d366;color:white;
+  display:flex;align-items:center;justify-content:center;
+  font-size:34px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.3);
+  z-index:200
+}
 
-    .product img{
-      width:100%;
-      height:205px;
-      object-fit:contain;
-      border-radius:22px;
-      background:linear-gradient(135deg,#fff0f7,#eefcff);
-      padding:18px;
-      margin-bottom:14px;
-    }
-
-    .tag{
-      display:inline-block;
-      background:#fff3c4;
-      color:#8a6b00;
-      font-size:12px;
-      font-weight:800;
-      padding:6px 12px;
-      border-radius:999px;
-      margin-bottom:10px;
-    }
-
-    .product h3{
-      font-size:19px;
-      margin-bottom:8px;
-      color:#333;
-    }
-
-    .product p{
-      color:#666;
-      font-size:14px;
-      min-height:44px;
-      line-height:1.4;
-      margin-bottom:12px;
-    }
-
-    .price{
-      font-size:22px;
-      font-weight:900;
-      color:#e85ca0;
-      margin-bottom:14px;
-    }
-
-    .about{
-      background:linear-gradient(135deg,#ffffff,#f3fbff);
-      border-radius:34px;
-      padding:38px;
-      max-width:1000px;
-      margin:auto;
-      text-align:center;
-      box-shadow:0 8px 25px rgba(0,0,0,.09);
-    }
-
-    .about h2{
-      font-size:32px;
-      margin-bottom:14px;
-    }
-
-    .about p{
-      color:#606060;
-      line-height:1.6;
-      font-size:17px;
-    }
-
-    footer{
-      background:#2d2d2d;
-      color:white;
-      text-align:center;
-      padding:35px 7%;
-      margin-top:30px;
-      line-height:1.7;
-    }
-
-    .whatsapp-float{
-      position:fixed;
-      right:22px;
-      bottom:22px;
-      width:64px;
-      height:64px;
-      border-radius:50%;
-      background:#25d366;
-      color:white;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:34px;
-      text-decoration:none;
-      box-shadow:0 6px 20px rgba(0,0,0,.3);
-      z-index:200;
-    }
-
-    @media(max-width:850px){
-      header{
-        flex-direction:column;
-        padding:12px 5%;
-      }
-
-      .logo img{
-        height:78px;
-        max-width:310px;
-      }
-
-      nav{
-        gap:14px;
-        font-size:14px;
-      }
-
-      .hero{
-        grid-template-columns:1fr;
-        text-align:center;
-        padding:45px 6%;
-      }
-
-      .hero h1{
-        font-size:38px;
-      }
-
-      .hero p{
-        font-size:17px;
-      }
-
-      section{
-        padding:45px 6%;
-      }
-    }
-  </style>
+@media(max-width:850px){
+  header{flex-direction:column}
+  .logo-box img{height:65px}
+  .hero{grid-template-columns:1fr;text-align:center;padding:45px 6%}
+  .hero h1{font-size:38px}
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">
+  <a class="logo-box" href="#inicio">
     <img src="assets/logo-mavimaker.svg" alt="MaviMaker Logo">
-  </div>
+  </a>
 
   <nav>
     <a href="#inicio">Inicio</a>
@@ -308,233 +154,213 @@
 
 <main id="inicio">
 
-  <section class="hero">
-    <div>
-      <h1>Detalles personalizados en impresión 3D</h1>
-      <p>
-        Creamos recuerdos, llaveros, porta latas, letreros, placas y accesorios personalizados
-        para eventos, negocios y regalos especiales.
-      </p>
-      <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20hacer%20un%20pedido%20personalizado%20con%20MaviMaker" target="_blank">
-        Pedir por WhatsApp
-      </a>
+<section class="hero">
+  <div>
+    <h1>Detalles personalizados en impresión 3D</h1>
+    <p>Recuerdos, llaveros, porta latas, letreros, placas, accesorios y diseños personalizados para eventos, negocios y regalos especiales.</p>
+    <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20hacer%20un%20pedido%20personalizado%20con%20MaviMaker" target="_blank">Pedir por WhatsApp</a>
+  </div>
+
+  <div class="hero-card">
+    <div class="logo-box">
+      <img src="assets/logo-mavimaker.svg" alt="MaviMaker">
     </div>
+    <h2>Catálogo MaviMaker</h2>
+    <p>Elige diseño, colores, nombre y temática.</p>
+  </div>
+</section>
 
-    <div class="hero-card">
-      <img src="assets/logo-mavimaker.svg" alt="Catálogo MaviMaker">
-      <h2>Catálogo MaviMaker</h2>
-      <p>Elige diseño, colores, nombre y temática.</p>
-    </div>
-  </section>
+<section id="categorias">
+  <h2 class="section-title">Categorías</h2>
+  <p class="section-subtitle">Ahora sí, cada botón te lleva a su sección.</p>
 
-  <section id="categorias">
-    <h2 class="section-title">Categorías</h2>
-    <p class="section-subtitle">Productos personalizados para cada ocasión</p>
+  <div class="categories">
+    <a class="category" href="#porta-latas"><span>🥤</span>Porta latas</a>
+    <a class="category" href="#llaveros"><span>🔑</span>Llaveros</a>
+    <a class="category" href="#eventos"><span>🎁</span>Recuerditos</a>
+    <a class="category" href="#accesorios"><span>💅</span>Accesorios</a>
+    <a class="category" href="#decoracion"><span>✨</span>Decoración</a>
+    <a class="category" href="#mascotas"><span>🐾</span>Mascotas</a>
+  </div>
+</section>
 
-    <div class="categories">
-      <div class="category"><span>🥤</span>Porta latas</div>
-      <div class="category"><span>🔑</span>Llaveros</div>
-      <div class="category"><span>🎁</span>Recuerditos</div>
-      <div class="category"><span>🐾</span>Mascotas</div>
-      <div class="category"><span>🏆</span>Medalleros</div>
-      <div class="category"><span>✨</span>Personalizados</div>
-    </div>
-  </section>
+<section id="catalogo">
+<h2 class="section-title">Catálogo destacado</h2>
+<p class="section-subtitle">Imagen genérica temporal; después cambiamos por fotos reales.</p>
 
-  <section id="catalogo">
-    <h2 class="section-title">Catálogo destacado</h2>
-    <p class="section-subtitle">Por ahora usamos imagen genérica; después cambiamos por fotos reales.</p>
+<div class="products">
 
-    <div class="products">
+<div class="product" id="porta-latas">
+  <div class="product-img">🥤</div><span class="tag">Porta latas</span>
+  <h3>Porta latas personalizado</h3><p>Ideal para eventos, negocios y regalos.</p>
+  <div class="price">$280</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Porta%20latas%20personalizado" target="_blank">Pedir</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Abre latas Nails V2">
-        <span class="tag">Accesorio</span>
-        <h3>Abre latas Nails V2</h3>
-        <p>Accesorio práctico personalizado en impresión 3D.</p>
-        <div class="price">$65</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Abre%20latas%20Nails%20V2" target="_blank">Pedir</a>
-      </div>
+<div class="product">
+  <div class="product-img">🥤</div><span class="tag">Mayoreo</span>
+  <h3>Porta latas mayoreo</h3><p>Precio especial para eventos y negocios.</p>
+  <div class="price">Desde $199</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20porta%20latas%20por%20mayoreo" target="_blank">Cotizar</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Abre latas Moño">
-        <span class="tag">Accesorio</span>
-        <h3>Abre latas Moño</h3>
-        <p>Diseño con moño, ideal para detalle personalizado.</p>
-        <div class="price">$85</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Abre%20latas%20Moño" target="_blank">Pedir</a>
-      </div>
+<div class="product" id="accesorios">
+  <div class="product-img">💅</div><span class="tag">Accesorio</span>
+  <h3>Abre latas Nails V2</h3><p>Accesorio práctico personalizado.</p>
+  <div class="price">$65</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Abre%20latas%20Nails%20V2" target="_blank">Pedir</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Porta latas">
-        <span class="tag">Evento</span>
-        <h3>Porta latas</h3>
-        <p>Ideal para eventos, regalos, negocios y personalización.</p>
-        <div class="price">$280</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Porta%20latas" target="_blank">Pedir</a>
-      </div>
+<div class="product">
+  <div class="product-img">🎀</div><span class="tag">Accesorio</span>
+  <h3>Abre latas Moño</h3><p>Diseño con moño para detalle personalizado.</p>
+  <div class="price">$85</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Abre%20latas%20Moño" target="_blank">Pedir</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Llavero Instax MINI">
-        <span class="tag">Llavero</span>
-        <h3>Llavero Instax MINI</h3>
-        <p>Llavero personalizado para foto estilo Instax Mini.</p>
-        <div class="price">$120</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Llavero%20Instax%20MINI" target="_blank">Pedir</a>
-      </div>
+<div class="product">
+  <div class="product-img">🪞</div><span class="tag">Accesorio</span>
+  <h3>Abre lata espejo</h3><p>Accesorio práctico con diseño personalizado.</p>
+  <div class="price">$85</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Abre%20lata%20espejo" target="_blank">Pedir</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Llavero Instax XL">
-        <span class="tag">Llavero</span>
-        <h3>Llavero Instax XL</h3>
-        <p>Versión grande personalizada tipo Instax.</p>
-        <div class="price">$160</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Llavero%20Instax%20XL" target="_blank">Pedir</a>
-      </div>
+<div class="product">
+  <div class="product-img">👠</div><span class="tag">Accesorio</span>
+  <h3>Abre lata Zapatilla</h3><p>Diseño creativo en forma de zapatilla.</p>
+  <div class="price">$45</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Abre%20lata%20Zapatilla" target="_blank">Pedir</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Letras personalizadas">
-        <span class="tag">Decoración</span>
-        <h3>Letras personalizadas</h3>
-        <p>Nombres, iniciales y letras decorativas en impresión 3D.</p>
-        <div class="price">Desde $180</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Letras%20personalizadas" target="_blank">Cotizar</a>
-      </div>
+<div class="product" id="llaveros">
+  <div class="product-img">🔑</div><span class="tag">Llavero</span>
+  <h3>Llavero Instax MINI</h3><p>Llavero personalizado para foto estilo Instax Mini.</p>
+  <div class="price">$120</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Llavero%20Instax%20MINI" target="_blank">Pedir</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Llavero Tipo Owala">
-        <span class="tag">Llavero</span>
-        <h3>Llavero Tipo Owala</h3>
-        <p>Llavero personalizado para termo o botella.</p>
-        <div class="price">$120</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Llavero%20Tipo%20Owala" target="_blank">Pedir</a>
-      </div>
+<div class="product">
+  <div class="product-img">📸</div><span class="tag">Llavero</span>
+  <h3>Llavero Instax XL</h3><p>Versión grande personalizada tipo Instax.</p>
+  <div class="price">$160</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Llavero%20Instax%20XL" target="_blank">Pedir</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Llaveros Nombres">
-        <span class="tag">Llavero</span>
-        <h3>Llaveros Nombres</h3>
-        <p>Llaveros personalizados con nombre y colores a elegir.</p>
-        <div class="price">$85</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Llaveros%20Nombres" target="_blank">Pedir</a>
-      </div>
+<div class="product">
+  <div class="product-img">🏷️</div><span class="tag">Llavero</span>
+  <h3>Llaveros Nombres</h3><p>Llaveros personalizados con nombre y colores.</p>
+  <div class="price">$85</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Llaveros%20Nombres" target="_blank">Pedir</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Display NFC">
-        <span class="tag">Negocio</span>
-        <h3>Display NFC</h3>
-        <p>Display personalizado para negocio o contenido digital.</p>
-        <div class="price">Desde $480</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Display%20NFC" target="_blank">Cotizar</a>
-      </div>
+<div class="product">
+  <div class="product-img">💧</div><span class="tag">Llavero</span>
+  <h3>Llavero Tipo Owala</h3><p>Llavero personalizado para termo o botella.</p>
+  <div class="price">$120</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Llavero%20Tipo%20Owala" target="_blank">Pedir</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Recuerdos Comunión">
-        <span class="tag">Evento</span>
-        <h3>Recuerdos Comunión</h3>
-        <p>Detalles personalizados para Primera Comunión.</p>
-        <div class="price">Desde $18</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Recuerdos%20de%20Comunion" target="_blank">Cotizar</a>
-      </div>
+<div class="product">
+  <div class="product-img">🔑</div><span class="tag">Llavero</span>
+  <h3>Llavero personalizado</h3><p>Con nombre, logo, frase o temática.</p>
+  <div class="price">Desde $18</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Llavero%20Personalizado" target="_blank">Cotizar</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Abre lata espejo">
-        <span class="tag">Accesorio</span>
-        <h3>Abre lata espejo</h3>
-        <p>Accesorio práctico con diseño personalizado.</p>
-        <div class="price">$85</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Abre%20lata%20espejo" target="_blank">Pedir</a>
-      </div>
+<div class="product">
+  <div class="product-img">🏋️</div><span class="tag">Llavero</span>
+  <h3>Llavero con logo</h3><p>Ideal para negocios, gimnasios y marcas.</p>
+  <div class="price">Cotizar</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20llaveros%20con%20logo" target="_blank">Cotizar</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Abre lata Zapatilla">
-        <span class="tag">Accesorio</span>
-        <h3>Abre lata Zapatilla</h3>
-        <p>Diseño creativo en forma de zapatilla.</p>
-        <div class="price">$45</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Abre%20lata%20Zapatilla" target="_blank">Pedir</a>
-      </div>
+<div class="product" id="eventos">
+  <div class="product-img">🕊️</div><span class="tag">Evento</span>
+  <h3>Recuerdos Comunión</h3><p>Detalles personalizados para Primera Comunión.</p>
+  <div class="price">Desde $18</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Recuerdos%20de%20Comunion" target="_blank">Cotizar</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Llavero Personalizado">
-        <span class="tag">Llavero</span>
-        <h3>Llavero Personalizado</h3>
-        <p>Diseño con nombre, logo, frase o temática.</p>
-        <div class="price">Desde $18</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Llavero%20Personalizado" target="_blank">Cotizar</a>
-      </div>
+<div class="product">
+  <div class="product-img">👶</div><span class="tag">Evento</span>
+  <h3>Recuerdos Bautizo</h3><p>Detalles personalizados para bautizo.</p>
+  <div class="price">Desde $18</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Recuerdos%20de%20Bautizo" target="_blank">Cotizar</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Recuerdos Bautizo">
-        <span class="tag">Evento</span>
-        <h3>Recuerdos Bautizo</h3>
-        <p>Detalles personalizados para bautizo.</p>
-        <div class="price">Desde $18</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Recuerdos%20de%20Bautizo" target="_blank">Cotizar</a>
-      </div>
+<div class="product">
+  <div class="product-img">🎂</div><span class="tag">Evento</span>
+  <h3>Recuerdos cumpleaños</h3><p>Detalles personalizados por temática.</p>
+  <div class="price">Cotizar</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20recuerdos%20para%20cumpleaños" target="_blank">Cotizar</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Varita Mágica Pago">
-        <span class="tag">Temático</span>
-        <h3>Varita Mágica Pago</h3>
-        <p>Accesorio temático personalizado.</p>
-        <div class="price">$180</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Varita%20Magica%20Pago" target="_blank">Pedir</a>
-      </div>
+<div class="product">
+  <div class="product-img">🎀</div><span class="tag">Evento</span>
+  <h3>Recuerdos baby shower</h3><p>Detalles personalizados para baby shower.</p>
+  <div class="price">Cotizar</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20recuerdos%20para%20baby%20shower" target="_blank">Cotizar</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Porta Vinos">
-        <span class="tag">Regalo</span>
-        <h3>Porta Vinos</h3>
-        <p>Porta botella personalizado para regalo o decoración.</p>
-        <div class="price">$225</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Porta%20Vinos" target="_blank">Pedir</a>
-      </div>
+<div class="product" id="decoracion">
+  <div class="product-img">🔤</div><span class="tag">Decoración</span>
+  <h3>Letras personalizadas</h3><p>Nombres, iniciales y letras decorativas.</p>
+  <div class="price">Desde $180</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Letras%20personalizadas" target="_blank">Cotizar</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Medallero">
-        <span class="tag">Decoración</span>
-        <h3>Medallero</h3>
-        <p>Diseño personalizado para colgar medallas.</p>
-        <div class="price">$140</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Medallero" target="_blank">Pedir</a>
-      </div>
+<div class="product">
+  <div class="product-img">🪄</div><span class="tag">Temático</span>
+  <h3>Varita Mágica Pago</h3><p>Accesorio temático personalizado.</p>
+  <div class="price">$180</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Varita%20Magica%20Pago" target="_blank">Pedir</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Porta Retratos MINI">
-        <span class="tag">Regalo</span>
-        <h3>Porta Retratos MINI</h3>
-        <p>Porta retrato pequeño personalizado.</p>
-        <div class="price">$120</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Porta%20Retratos%20MINI" target="_blank">Pedir</a>
-      </div>
+<div class="product">
+  <div class="product-img">🍷</div><span class="tag">Regalo</span>
+  <h3>Porta Vinos</h3><p>Porta botella personalizado para regalo.</p>
+  <div class="price">$225</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Porta%20Vinos" target="_blank">Pedir</a>
+</div>
 
-      <div class="product">
-        <img src="assets/logo-mavimaker.svg" alt="Placas Mascotas">
-        <span class="tag">Mascotas</span>
-        <h3>Placas Mascotas</h3>
-        <p>Placas personalizadas para perros y gatos.</p>
-        <div class="price">Desde $65</div>
-        <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Placas%20para%20Mascotas" target="_blank">Cotizar</a>
-      </div>
+<div class="product">
+  <div class="product-img">🏅</div><span class="tag">Decoración</span>
+  <h3>Medallero</h3><p>Diseño personalizado para colgar medallas.</p>
+  <div class="price">$140</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Medallero" target="_blank">Pedir</a>
+</div>
 
-    </div>
-  </section>
+<div class="product">
+  <div class="product-img">🖼️</div><span class="tag">Regalo</span>
+  <h3>Porta Retratos MINI</h3><p>Porta retrato pequeño personalizado.</p>
+  <div class="price">$120</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20pedir%20Porta%20Retratos%20MINI" target="_blank">Pedir</a>
+</div>
 
-  <section id="personalizados">
-    <div class="about">
-      <h2>¿Tienes una idea especial?</h2>
-      <p>
-        En MaviMaker podemos crear diseños personalizados con nombre, colores, logo,
-        temática o evento. Escríbenos por WhatsApp y revisamos tu idea, precio y tiempo
-        de elaboración.
-      </p>
-      <br>
-      <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20un%20diseño%20personalizado%20con%20MaviMaker" target="_blank">
-        Cotizar personalizado
-      </a>
-    </div>
-  </section>
+<div class="product">
+  <div class="product-img">📲</div><span class="tag">Negocio</span>
+  <h3>Display NFC</h3><p>Display personalizado para negocio o contenido digital.</p>
+  <div class="price">Desde $480</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Display%20NFC" target="_blank">Cotizar</a>
+</div>
+
+<div class="product" id="mascotas">
+  <div class="product-img">🐾</div><span class="tag">Mascotas</span>
+  <h3>Placas Mascotas</h3><p>Placas personalizadas para perros y gatos.</p>
+  <div class="price">Desde $65</div>
+  <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20Placas%20para%20Mascotas" target="_blank">Cotizar</a>
+</div>
+
+</div>
+</section>
+
+<section id="personalizados">
+  <div class="about">
+    <h2>¿Tienes una idea especial?</h2>
+    <p>Podemos crear diseños personalizados con nombre, colores, logo, temática o evento.</p><br>
+    <a class="btn" href="https://wa.me/5218147899927?text=Hola,%20quiero%20cotizar%20un%20diseño%20personalizado%20con%20MaviMaker" target="_blank">Cotizar personalizado</a>
+  </div>
+</section>
 
 </main>
 
@@ -544,9 +370,7 @@
   <p>Pedidos por WhatsApp: 814 789 9927</p>
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/5218147899927?text=Hola,%20quiero%20hacer%20un%20pedido%20con%20MaviMaker" target="_blank">
-  ☎
-</a>
+<a class="whatsapp-float" href="https://wa.me/5218147899927?text=Hola,%20quiero%20hacer%20un%20pedido%20con%20MaviMaker" target="_blank">☎</a>
 
 </body>
 </html>
